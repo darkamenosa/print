@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org"
+        lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Print</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+
+    <style type="text/css">
+    	@page {
+ 			size: A4 landscape;
+            margin-bottom: -1cm;
+            margin-top: 1.5cm;
+		}
+
+        .print-block {
+            height: 10cm;
+        }
+
+        .product-box {
+            height: 8cm;
+            border: 1px solid rgb(219, 219, 219);
+        }
+
+        .product-box ul {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .top-10 {
+            margin-top: 10px;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        .separator {
+            width: 40%;
+            margin-left: 30%;
+            border-top: 1px solid rgb(219, 219, 219);
+            position: absolute;
+            margin-top: -3%;
+        }
+
+        div, u, i, span, strong, b {
+            font-size: 15pt;
+        }
+    </style>
+</head>
+<body>
+    <div th:each="order, iterStat : ${orders}">
+        <div th:class="${iterStat.even}? 'page-break'"></div>
+        <div class="row print-block">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-3">
+                            <u><i>Người gửi: </i></u>
+                        </div>
+                        <div class="col-sm-9">
+                            <h3 style="font-size: 24pt;">Ánh - 01679708957</h3>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-3">
+                            <u><i>Người nhận: </i></u>
+                        </div>
+                        <div class="col-sm-9">
+                            <h3 style="font-size: 24pt;" th:text="${order.fullName}"></h3>
+                        </div>
+
+                        <th:block th:if="${order.phoneNumber != '' &amp;&amp; order.phoneNumber != null}">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">SĐT:</div>
+                                <div class="col-sm-9" th:text="${order.phoneNumber}"></div>
+                            </div>
+                        </th:block>
+
+                        <th:block th:if="${order.address != '' &amp;&amp; order.address != null}">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">Địa chỉ:</div>
+                                <div class="col-sm-9" th:text="${order.address}"></div>
+                            </div>
+                        </th:block>
+
+                        <th:block th:if="${order.paymentMethod == 'COD'}">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">COD:</div>
+                                <div class="col-sm-9">
+                                    <b><span th:text="${#numbers.formatInteger(order.total,3,'COMMA')}"></span> đ</b>
+                                </div>
+                            </div>
+                        </th:block>
+
+                        <th:block th:if="${order.logisticProvider != '' &amp;&amp; order.logisticProvider != null}">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">Chành xe:</div>
+                                <div class="col-sm-9" th:text="${order.logisticProvider}"></div>
+                            </div>
+                        </th:block>
+
+                        <th:block th:if="${order.description != '' &amp;&amp; order.description != null}">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">Ghi chú:</div>
+                                <div class="col-sm-9" th:text="${order.description}"></div>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="col-sm-12 product-box">
+                    <ul class="top-10">
+                        <th:block th:if="${order.me != '' &amp;&amp; order.me != null}">
+                            <li><span>Me: </span><b th:text="${order.me}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.muoiDau != '' &amp;&amp; order.muoiDau != null}">
+                            <li><span>Muối đậu: </span><b th:text="${order.muoiDau}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.tronTac != '' &amp;&amp; order.tronTac != null}">
+                            <li><span>Trộn tắc: </span><b th:text="${order.tronTac}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.sateTac != '' &amp;&amp; order.sateTac != null}">
+                            <li><span>Sa tế tắc: </span><b th:text="${order.sateTac}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.sateToi != '' &amp;&amp; order.sateToi != null}">
+                            <li><span>Sa tế tỏi: </span><b th:text="${order.sateToi}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.bo != '' &amp;&amp; order.bo != null}">
+                            <li><span>Bơ: </span><b th:text="${order.bo}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.deoCay != '' &amp;&amp; order.deoCay != null}">
+                            <li><span>Dẻo cay: </span><b th:text="${order.deoCay}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.deoTom != '' &amp;&amp; order.deoTom != null}">
+                            <li><span>Dẻo tôm: </span><b th:text="${order.deoTom}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.deoMe != '' &amp;&amp; order.deoMe != null}">
+                            <li><span>Dẻo me: </span><b th:text="${order.deoMe}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.muoiTom != '' &amp;&amp; order.muoiTom != null}">
+                            <li><span>Muối tôm: </span><b th:text="${order.muoiTom}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.muoiChay != '' &amp;&amp; order.muoiChay != null}">
+                            <li><span>Muối chay: </span><b th:text="${order.muoiChay}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.phoiSuong != '' &amp;&amp; order.phoiSuong != null}">
+                            <li><span>Phơi sương: </span><b th:text="${order.phoiSuong}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.banhTrangChuoi != '' &amp;&amp; order.banhTrangChuoi != null}">
+                            <li><span>Bánh tráng chuối: </span><b th:text="${order.banhTrangChuoi}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.phoiSuongMan != '' &amp;&amp; order.phoiSuongMan != null}">
+                            <li><span>Phơi sương mặn: </span><b th:text="${order.phoiSuongMan}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.tronMuoiOt != '' &amp;&amp; order.tronMuoiOt != null}">
+                            <li><span>Tròn muối ớt: </span><b th:text="${order.tronMuoiOt}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.xauCuon != '' &amp;&amp; order.xauCuon != null}">
+                            <li><span>Xâu cuốn: </span><b th:text="${order.xauCuon}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.chaBong != '' &amp;&amp; order.chaBong != null}">
+                            <li><span>Chà bông: </span><b th:text="${order.chaBong}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.ongTom != '' &amp;&amp; order.ongTom != null}">
+                            <li><span>Ống tôm: </span><b th:text="${order.ongTom}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.voToiOt != '' &amp;&amp; order.voToiOt != null}">
+                            <li><span>Vò tỏi ớt: </span><b th:text="${order.voToiOt}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.banhTrangVuong != '' &amp;&amp; order.banhTrangVuong != null}">
+                            <li><span>Bánh tráng vuông: </span><b th:text="${order.banhTrangVuong}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.banhTrangVung != '' &amp;&amp; order.banhTrangVung != null}">
+                            <li><span>Bánh tráng vụn: </span><b th:text="${order.banhTrangVung}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.chumRuot != '' &amp;&amp; order.chumRuot != null}">
+                            <li><span>Chùm ruột: </span><b th:text="${order.chumRuot}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.mutMe != '' &amp;&amp; order.mutMe != null}">
+                            <li><span>Mứt me: </span><b th:text="${order.mutMe}"></b></li>
+                        </th:block>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div th:class="${iterStat.even}? 'separator'"></div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'print'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+    // Spring
+	compile('org.springframework.boot:spring-boot-devtools')
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile('org.springframework.boot:spring-boot-starter-web')
+
+    // Core
+    compile ('com.itextpdf.tool:xmlworker:5.5.9')
+    compile('com.itextpdf:itextpdf:5.5.9')
+
+	compile "org.apache.poi:poi:3.14"
+	compile "org.apache.poi:poi-ooxml:3.14"
+
+    // Log
+	compile "org.slf4j:slf4j-api:1.7.18"
+	compile "ch.qos.logback:logback-classic:1.1.6"
+
+    // Test
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+
+
+eclipse {
+	classpath {
+		 containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
+		 containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
+	}
+}
