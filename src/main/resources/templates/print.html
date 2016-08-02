@@ -57,13 +57,13 @@
         <div th:class="${iterStat.even}? 'page-break'"></div>
         <div class="row print-block">
             <div class="col-sm-8">
-                <div class="row">
+                <div class="row" style="margin-bottom: 10px">
                     <div class="col-sm-12">
                         <div class="col-sm-3">
                             <u><i>Người gửi: </i></u>
                         </div>
                         <div class="col-sm-9">
-                            <h3 style="font-size: 24pt;">Ánh - 01679708957</h3>
+                            <h3 style="font-size: 20pt;  margin-top: 0;  margin-bottom: 0;">Ánh - 01679708957</h3>
                         </div>
                     </div>
                 </div>
@@ -75,13 +75,15 @@
                             <u><i>Người nhận: </i></u>
                         </div>
                         <div class="col-sm-9">
-                            <h3 style="font-size: 24pt;" th:text="${order.fullName}"></h3>
+                            <h3 style="font-size: 20pt; margin-top: 0;  margin-bottom: 0;" th:text="${order.fullName}"></h3>
                         </div>
 
                         <th:block th:if="${order.phoneNumber != '' &amp;&amp; order.phoneNumber != null}">
                             <div class="col-sm-12">
                                 <div class="col-sm-3">SĐT:</div>
-                                <div class="col-sm-9" th:text="${order.phoneNumber}"></div>
+                                <div class="col-sm-9">
+                                    <h3 style="font-size: 24pt; margin-top: 0; margin-bottom: 0;" th:text="${order.phoneNumber}"></h3>
+                                </div>
                             </div>
                         </th:block>
 
