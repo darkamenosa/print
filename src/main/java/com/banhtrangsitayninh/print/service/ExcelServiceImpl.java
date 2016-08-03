@@ -86,7 +86,7 @@ public class ExcelServiceImpl implements ExcelService {
             order.setBanhTrangVuong(row[29]);
             order.setBanhTrangVung(row[30]);
             order.setChumRuot(row[31]);
-            order.setChumRuot(row[32]);
+            order.setMutMe(row[32]);
             order.setAdditionalFee(row[33]);
             order.setShippingFee(row[34]);
             order.setDiscount(row[35]);
