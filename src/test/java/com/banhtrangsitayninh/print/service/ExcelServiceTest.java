@@ -24,11 +24,11 @@ public class ExcelServiceTest {
     @Autowired
     private ExcelService excelService;
 
-    @Test
-    public void testReadExcel() throws IOException {
-        Resource resource = new ClassPathResource("TestData.xlsx");
-        List<Order> orders = excelService.parse(resource.getInputStream());
-        LOGGER.debug("Order size: {}", orders.size());
-    }
+//    @Test
+//    public void testReadExcel() throws IOException {
+//        Resource resource = new ClassPathResource("TestData.xlsx");
+//        List<Order> orders = excelService.parse(resource.getInputStream());
+//        LOGGER.debug("Order size: {}", orders.size());
+//    }
 }
 

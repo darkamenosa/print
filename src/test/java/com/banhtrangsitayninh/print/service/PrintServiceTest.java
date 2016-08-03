@@ -30,21 +30,21 @@ public class PrintServiceTest {
     @Autowired
     private ExcelService excelService;
 
-    @Test
-    public void testProcessTemplate() throws IOException {
+//    @Test
+//    public void testProcessTemplate() throws IOException {
+//
+//        Resource resource = new ClassPathResource("TestData.xlsx");
+//        List<Order> orders = excelService.parse(resource.getInputStream());
+//
+//        String result = printService.processTemplate(orders);
+//        Files.write(Paths.get("result.html"), result.getBytes());
+//    }
 
-        Resource resource = new ClassPathResource("TestData.xlsx");
-        List<Order> orders = excelService.parse(resource.getInputStream());
-
-        String result = printService.processTemplate(orders);
-        Files.write(Paths.get("result.html"), result.getBytes());
-    }
-
-    @Test
-    public void testPrint() throws IOException {
-
-        Resource resource = new ClassPathResource("TestData.xlsx");
-        printService.print("TestData.xlsx", resource.getInputStream());
-    }
+//    @Test
+//    public void testPrint() throws IOException {
+//
+//        Resource resource = new ClassPathResource("TestData.xlsx");
+//        printService.print("TestData.xlsx", resource.getInputStream());
+//    }
 
 }
