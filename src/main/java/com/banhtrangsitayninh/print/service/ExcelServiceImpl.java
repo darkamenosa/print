@@ -87,10 +87,12 @@ public class ExcelServiceImpl implements ExcelService {
             order.setBanhTrangVung(row[30]);
             order.setChumRuot(row[31]);
             order.setMutMe(row[32]);
-            order.setAdditionalFee(row[33]);
-            order.setShippingFee(row[34]);
-            order.setDiscount(row[35]);
-            order.setTotal(row[36]);
+            order.setKhoGa(row[33]);
+            order.setAdditionalFee(row[34]);
+            order.setShippingFee(row[35]);
+            order.setDiscount(row[36]);
+            order.setTotal(row[37]);
+            order.setDescriptionRight(getValue(row, 38));
             return order;
         };
     }
@@ -110,5 +112,13 @@ public class ExcelServiceImpl implements ExcelService {
 
             return null;
         };
+    }
+
+    private String getValue(String[] array, int index) {
+        try {
+            return array[index];
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            return "";
+        }
     }
 }

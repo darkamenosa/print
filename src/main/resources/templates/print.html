@@ -121,6 +121,9 @@
             </div>
             <div class="col-sm-4">
                 <div class="col-sm-12 product-box">
+                    <th:block th:if="${order.descriptionRight != '' &amp;&amp; order.descriptionRight != null}">
+                        (<strong th:text="${order.descriptionRight}"></strong>)
+                    </th:block>
                     <ul class="top-10">
                         <th:block th:if="${order.me != '' &amp;&amp; order.me != null}">
                             <li><span>Me: </span><b th:text="${order.me}"></b></li>
@@ -190,6 +193,9 @@
                         </th:block>
                         <th:block th:if="${order.mutMe != '' &amp;&amp; order.mutMe != null}">
                             <li><span>Mứt me: </span><b th:text="${order.mutMe}"></b></li>
+                        </th:block>
+                        <th:block th:if="${order.khoGa != '' &amp;&amp; order.khoGa != null}">
+                            <li><span>Khô gà: </span><b th:text="${order.khoGa}"></b></li>
                         </th:block>
                     </ul>
                 </div>

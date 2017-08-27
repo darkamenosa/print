@@ -18,6 +18,7 @@ public class Order implements Serializable {
     private String paymentStatus;
     private String orderStatus;
     private String description;
+    private String descriptionRight;
 
     // Product quantity
     private String me;
@@ -43,6 +44,7 @@ public class Order implements Serializable {
     private String banhTrangVung;
     private String chumRuot;
     private String mutMe;
+    private String khoGa;
 
     // Fees
     private String additionalFee;
@@ -341,6 +343,22 @@ public class Order implements Serializable {
         return this;
     }
 
+    public String getKhoGa() {
+        return khoGa;
+    }
+
+    public void setKhoGa(String khoGa) {
+        this.khoGa = khoGa;
+    }
+
+    public String getDescriptionRight() {
+        return descriptionRight;
+    }
+
+    public void setDescriptionRight(String descriptionRight) {
+        this.descriptionRight = descriptionRight;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -353,6 +371,7 @@ public class Order implements Serializable {
                 ", paymentStatus='" + paymentStatus + '\'' +
                 ", orderStatus='" + orderStatus + '\'' +
                 ", description='" + description + '\'' +
+                ", descriptionRight='" + descriptionRight + '\'' +
                 ", me='" + me + '\'' +
                 ", muoiDau='" + muoiDau + '\'' +
                 ", tronTac='" + tronTac + '\'' +
@@ -375,6 +394,8 @@ public class Order implements Serializable {
                 ", banhTrangVuong='" + banhTrangVuong + '\'' +
                 ", banhTrangVung='" + banhTrangVung + '\'' +
                 ", chumRuot='" + chumRuot + '\'' +
+                ", mutMe='" + mutMe + '\'' +
+                ", khoGa='" + khoGa + '\'' +
                 ", additionalFee='" + additionalFee + '\'' +
                 ", shippingFee='" + shippingFee + '\'' +
                 ", discount='" + discount + '\'' +
