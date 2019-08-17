@@ -36,7 +36,6 @@ public class Order implements Serializable {
     private String banhTrangChuoi;
     private String phoiSuongMan;
     private String tronMuoiOt;
-    private String xauCuon;
     private String chaBong;
     private String ongTom;
     private String voToiOt;
@@ -45,6 +44,7 @@ public class Order implements Serializable {
     private String chumRuot;
     private String mutMe;
     private String khoGa;
+    private String voMuoiNhuyen;
 
     // Fees
     private String additionalFee;
@@ -246,14 +246,6 @@ public class Order implements Serializable {
         this.tronMuoiOt = tronMuoiOt;
     }
 
-    public String getXauCuon() {
-        return xauCuon;
-    }
-
-    public void setXauCuon(String xauCuon) {
-        this.xauCuon = xauCuon;
-    }
-
     public String getChaBong() {
         return chaBong;
     }
@@ -359,6 +351,15 @@ public class Order implements Serializable {
         this.descriptionRight = descriptionRight;
     }
 
+
+    public String getVoMuoiNhuyen() {
+        return voMuoiNhuyen;
+    }
+
+    public void setVoMuoiNhuyen(String voMuoiNhuyen) {
+        this.voMuoiNhuyen = voMuoiNhuyen;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
@@ -387,7 +388,7 @@ public class Order implements Serializable {
                 ", banhTrangChuoi='" + banhTrangChuoi + '\'' +
                 ", phoiSuongMan='" + phoiSuongMan + '\'' +
                 ", tronMuoiOt='" + tronMuoiOt + '\'' +
-                ", xauCuon='" + xauCuon + '\'' +
+                ", voMuoiNhuyen='" + voMuoiNhuyen + '\'' +
                 ", chaBong='" + chaBong + '\'' +
                 ", ongTom='" + ongTom + '\'' +
                 ", voToiOt='" + voToiOt + '\'' +

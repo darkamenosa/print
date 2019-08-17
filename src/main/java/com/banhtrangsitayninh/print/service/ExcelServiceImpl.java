@@ -79,7 +79,7 @@ public class ExcelServiceImpl implements ExcelService {
             order.setBanhTrangChuoi(row[22]);
             order.setPhoiSuongMan(row[23]);
             order.setTronMuoiOt(row[24]);
-            order.setXauCuon(row[25]);
+            order.setVoMuoiNhuyen(row[25]);
             order.setChaBong(row[26]);
             order.setOngTom(row[27]);
             order.setVoToiOt(row[28]);
